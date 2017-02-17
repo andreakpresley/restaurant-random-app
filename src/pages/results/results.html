@@ -1,0 +1,47 @@
+<!--
+  Generated template for the Results page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Results!</ion-title>
+  </ion-navbar>
+   <ion-range min="0" max="4" step="1" snaps="true" [(ngModel)]="price">
+      <ion-icon range-left name="logo-usd"></ion-icon>
+      <ion-icon range-right name="logo-usd"></ion-icon>
+    </ion-range>
+</ion-header>
+<ion-content padding>
+  <div *ngFor="let restaurant of restaurants; let i = index">
+  <ion-card [@visibilityChanged]="isVisible"  (swipe)='removeClicked(i)' *ngIf="restaurant.price_level <= price">
+    <ion-card-header>
+      <ion-icon name="close-circle" (click)='removeClicked(i)'></ion-icon> {{restaurant.name}}
+    </ion-card-header>
+    <ion-card-content>
+      Price: <ion-icon *ngFor="let key of restaurant.price_level | repeat" name="logo-usd" class="green-icon"></ion-icon>      
+    </ion-card-content>
+  </ion-card>
+  <ion-card [@visibilityChanged]="isVisible"  (swipe)='removeClicked(i)' *ngIf="!restaurant.price_level">
+    <ion-card-header>
+      <ion-icon name="close-circle" (click)='removeClicked(i)'></ion-icon> {{restaurant.name}}
+    </ion-card-header>
+    <ion-card-content>
+      No Price Avaliable 
+    </ion-card-content>
+  </ion-card>
+  </div>
+  <div class="load-more-button">
+    <button ion-button round  *ngIf="pageToken" (click)="loadMoreOptions()">Load More</button>
+  </div>
+</ion-content>
+<ion-footer no-border>
+  <ion-toolbar color="primary" style="text-align:center;">
+    <ion-buttons end>
+      <button ion-button full color="royal" (click)='pickWinner()'>
+         Pick Winner
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

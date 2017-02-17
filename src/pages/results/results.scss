@@ -1,0 +1,31 @@
+page-results {
+    .range-md .range-tick {
+        top: 19px;
+        height: 6px;
+    }
+    .range-md .range-bar-active {
+        background: #1cbf4c;
+    }
+    .range-md .range-knob {
+        background: #1cbf4c;
+    }
+    .range-md .range-tick-active {
+        background: #20c04f;
+    }
+    ion-range ion-icon {
+        color: #1cbf4c;
+    }
+    .green-icon {
+        color: #1cbf4c;
+        padding-right: 3px;
+    }
+    .range-ios .range-tick-active {
+        background: #20c04f;
+    }
+    .range-ios .range-bar-active {
+        background: #1cbf4c;
+    }
+    .load-more-button {
+        text-align: center;
+    }
+}

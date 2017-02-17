@@ -13,12 +13,14 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class WinnerPage {
   public winnerDetails;
+  public iframeUrl;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WinnerPage');
-    console.log('detials', this.navParams.get('winnerDetails'));
     this.winnerDetails = this.navParams.get('winnerDetails');
+    this.iframeUrl = this.navParams.get('iframeUrl')
   }
 
 }

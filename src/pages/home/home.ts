@@ -1,6 +1,6 @@
 import { ResultsPage } from './../results/results';
 import { Component } from '@angular/core';
-
+import { Geolocation } from 'ionic-native';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -23,9 +23,17 @@ export class HomePage {
   }
 
   public getPosition() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(this.setPosition.bind(this), this.errorCallBack);
-    }
+    // if (navigator.geolocation) {
+    //   navigator.geolocation.getCurrentPosition(this.setPosition.bind(this), this.errorCallBack);
+    // }
+    Geolocation.getCurrentPosition().then((position) => {
+ 
+      this.location = position.coords;
+    let data = {location: this.location}
+    this.navCtrl.push(ResultsPage, data)
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   private errorCallBack() {

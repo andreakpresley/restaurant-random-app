@@ -28,7 +28,7 @@ import { NavController, NavParams } from 'ionic-angular';
         animate(300)
       ]),
       transition('* => void', [
-        animate(500, style({ transform: 'translateX(100%)' }))
+        animate(300, style({ transform: 'translateX(100%)' }))
       ])
     ])
   ]
@@ -52,6 +52,7 @@ export class ResultsPage {
     if(this.zipCode) {
       this.getPositionZip();
     } else if (this.position) {
+      console.log(this.position);
       this.callGoogle(this.position.latitude, this.position.longitude);
     } else {
       console.log('I didnt get any data');
@@ -71,6 +72,7 @@ export class ResultsPage {
     this.resultsService.getPlaces(latitude, longitude)
       .subscribe(
       (results) => {
+        console.log(results)
         this.restaurants = results.results;
         this.pageToken = results.next_page_token;
         this.searching = false;

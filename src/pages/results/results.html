@@ -15,7 +15,7 @@
 </ion-header>
 <ion-content padding>
   <div *ngFor="let restaurant of restaurants; let i = index">
-  <ion-card [@visibilityChanged]="isVisible"  (swipe)='removeClicked(i)' *ngIf="restaurant.price_level <= price">
+  <ion-card [@flyInOut]  (swipe)='removeClicked(i)' *ngIf="restaurant.price_level <= price">
     <ion-card-header>
       <ion-icon name="close-circle" (click)='removeClicked(i)'></ion-icon> {{restaurant.name}}
     </ion-card-header>
@@ -23,7 +23,7 @@
       Price: <ion-icon *ngFor="let key of restaurant.price_level | repeat" name="logo-usd" class="green-icon"></ion-icon>      
     </ion-card-content>
   </ion-card>
-  <ion-card [@visibilityChanged]="isVisible"  (swipe)='removeClicked(i)' *ngIf="!restaurant.price_level">
+  <ion-card [@flyInOut]  (swipe)='removeClicked(i)' *ngIf="!restaurant.price_level">
     <ion-card-header>
       <ion-icon name="close-circle" (click)='removeClicked(i)'></ion-icon> {{restaurant.name}}
     </ion-card-header>
@@ -37,11 +37,7 @@
   </div>
 </ion-content>
 <ion-footer no-border>
-  <ion-toolbar color="primary" style="text-align:center;">
-    <ion-buttons end>
       <button ion-button full color="royal" (click)='pickWinner()'>
          Pick Winner
       </button>
-    </ion-buttons>
-  </ion-toolbar>
 </ion-footer>

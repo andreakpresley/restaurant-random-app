@@ -1,5 +1,6 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 
 /*
   Generated class for the Winner page.
@@ -13,12 +14,20 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class WinnerPage {
   public winnerDetails;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public iframeUrl;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WinnerPage');
-    console.log('detials', this.navParams.get('winnerDetails'));
     this.winnerDetails = this.navParams.get('winnerDetails');
+    this.iframeUrl = this.navParams.get('iframeUrl');
+    //this.viewCtrl.setBackButtonText('Cancel');
+    this.viewCtrl.showBackButton(false);
+    // this.navCtrl.setRoot(HomePage);
+  }
+  public goBackHome() {
+    this.navCtrl.setRoot(HomePage);
   }
 
 }
